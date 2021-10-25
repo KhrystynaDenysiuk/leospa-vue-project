@@ -53,16 +53,21 @@ export default {
 
 <style lang="scss">
   @import '../styles/_vars.scss';
+  @import '../styles/_mixins.scss';
 
   #gallery {
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
+    @include WidthHeightMargin();
     position: relative;
     padding-top: 60px;
     display: flex;
     justify-content: space-between;
     font-family: $rufina_bold;
+
+    @media screen and (max-width: 770px) {
+      flex-direction: column;
+      width: auto;
+      padding-top: 0;
+    }
   }
 
   .gallery {
@@ -75,6 +80,10 @@ export default {
 
   .right {
     padding-right: 5px;
+
+    @media screen and (max-width: 770px) {
+      padding: 20px;
+    }
   }
 
   .services {

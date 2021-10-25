@@ -61,11 +61,10 @@ export default {
 
 <style lang="scss">
   @import '../styles/_vars.scss';
+  @import '../styles/_mixins.scss';
 
   #team {
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
+    @include WidthHeightMargin();
     padding-top: 150px;
   }
 
@@ -76,30 +75,53 @@ export default {
       margin: 0 auto;
       text-align: center;
       padding-bottom: 50px;
+
+       @media screen and (max-width: 970px) {
+        width: 100%;
+      }
     }
 
     &__title {
-      font-size: 40px;
-      padding: 33px 0;
-      font-family: $rufina_bold;
+      @include Title($rufina_bold, 40px, 58px 0 33px 0);
+
+      @media screen and (max-width: 750px) {
+        font-size: 45px;
+      }
+
+      @media screen and (max-width: 560px) {
+        font-size: 40px;
+      }
     }
 
     &__paragraph {
-      line-height: 25px;
-      color: #818181;
-      font-family: $roboto_light;
+      @include Paragraph(25px, #818181, $roboto_light);
+
+      @media screen and (max-width: 1100px) {
+        padding: 0 30px;
+        font-size: 18px;
+      }
+
+      @media screen and (max-width: 560px) {
+        font-size: 13px;
+      }
     }
 
     &__master {
-      display: flex;
-      justify-content: space-evenly;
-      text-align: center;
+      @include Flex(flex, space-evenly, center);
       padding-top: 40px;
+
+      @media screen and (max-width: 1115px) {
+        flex-direction: column;
+      }
     }
   }
 
   .person {
     position: relative;
+
+    @media screen and (max-width: 1115px) {
+      padding-bottom: 20px;
+    }
 
     &__title {
       margin-top: 20px;

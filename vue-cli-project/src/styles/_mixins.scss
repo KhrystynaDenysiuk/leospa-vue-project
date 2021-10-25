@@ -1,0 +1,30 @@
+@mixin Center() {
+  width: 100%;
+  height: 100%;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+@mixin WidthHeightMargin() {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+
+@mixin Flex($flex, $content, $align) {
+  display: $flex;
+  justify-content: $content;
+  align-items: $align;
+}
+
+@mixin Paragraph($line, $color, $fontFamily) {
+  line-height: $line;
+  color: $color;
+  font-family: $fontFamily;
+}
+
+@mixin Title($fontFamily, $fontSize, $padding) {
+  font-family: $fontFamily;
+  font-size: $fontSize;
+  padding: $padding;
+}

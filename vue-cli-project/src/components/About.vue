@@ -54,16 +54,17 @@ import Button from './Button.vue'
 
 <style lang="scss">
   @import '../styles/_vars.scss';
+  @import '../styles/_mixins.scss';
 
   #about {
-    width: 100%;
-    height: 100%;
-    max-width: 1170px;
-    margin: 0 auto;
+    @include Center();
     padding-top: 250px;
     text-align: center;
-    width: 885px;
     position: relative;
+
+    @media screen and (max-width: 600px) {
+      padding-top: 120px;
+    }
   }
 
   .about {
@@ -72,6 +73,14 @@ import Button from './Button.vue'
       position: absolute;
       top: 15%;
       left: 0;
+
+      @media screen and (max-width: 1100px) {
+        width: 120px;
+      }
+
+      @media screen and (max-width: 600px) {
+        display: none;
+      }
     }
 
     &__photo1:hover {
@@ -82,7 +91,11 @@ import Button from './Button.vue'
     &__photo2 {
       position: absolute;
       bottom: 27%;
-      right: -15%;
+      right: -5%;
+
+      @media screen and (max-width: 1200px) {
+        display: none;
+      }
     }
 
     &__photo2:hover {
@@ -95,12 +108,26 @@ import Button from './Button.vue'
       padding-top: 37px;
       color: #818181;
       font-family: $roboto_regular;
+
+      @media screen and (max-width: 750px) {
+        font-size: 17px;
+      }
+
+      @media screen and (max-width: 560px) {
+        font-size: 15px;
+      }
     }
 
     &__title {
-      font-size: 40px;
-      padding: 33px 0;
-      font-family: $rufina_bold;
+      @include Title($rufina_bold, 40px, 33px 0);
+
+      @media screen and (max-width: 750px) {
+        font-size: 45px;
+      }
+
+      @media screen and (max-width: 560px) {
+        font-size: 40px;
+      }
     }
 
     &__paragraph2 {
@@ -109,9 +136,16 @@ import Button from './Button.vue'
 
     &__paragraph1,
     &__paragraph2 {
-      line-height: 25px;
-      color: #818181;
-      font-family: $roboto_light;
+      @include Paragraph(25px, #818181, $roboto_light);
+
+      @media screen and (max-width: 1100px) {
+        padding: 0 30px;
+        font-size: 18px;
+      }
+
+      @media screen and (max-width: 560px) {
+        font-size: 13px;
+      }
     }
 
     &__button {

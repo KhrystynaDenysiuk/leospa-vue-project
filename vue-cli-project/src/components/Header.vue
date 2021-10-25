@@ -1,7 +1,7 @@
 <template>
   <header id="header">
-    <modal name="modal" width="640" height="360">
-      <youtube video-id="PuQQYfFvgrs" ref="youtube"></youtube>
+    <modal name="modal" :adaptive="adaptive">
+      <youtube video-id="PuQQYfFvgrs" ref="youtube" :resize="true"></youtube>
     </modal>
     <div class="header__background-left">
       <img src="../assets/leaf.png" alt="" class="photo1">
@@ -35,6 +35,11 @@
 
   export default {
     name: 'Header',
+    data () {
+      return {
+        adaptive: true
+      }
+    },
     components: {
       Button,
     },
@@ -48,13 +53,11 @@
 
 <style lang="scss">
   @import '../styles/_vars.scss';
+  @import '../styles/_mixins.scss';
 
   #header {
     position: relative;
-    width: 100%;
-    height: 100%;
-    max-width: 1170px;
-    margin: 0 auto;
+    @include Center();
   }
 
   .header {
@@ -67,12 +70,21 @@
       .photo1 {
         width: 200px;
       }
+
+      @media screen and (max-width: 1400px) {
+        display: none;
+      }
     }
 
     &__content {
       text-align: left;
       width: 585px;
       margin: 100px 0 0 80px;
+
+      @media screen and (max-width: 750px) {
+        width: 94%;
+        margin: 100px 40px 0 15px;
+      }
     }
 
     &__subtitle {
@@ -80,27 +92,46 @@
       color: #fb9d9d;
       font-size: 20px;
       padding-bottom: 10px;
+
+      @media screen and (max-width: 750px) {
+        font-size: 15px;
+      }
+
+      @media screen and (max-width: 560px) {
+        font-size: 13px;
+      }
     }
 
     &__title {
-      font-family: $rufina_bold;
-      font-size: 65px;
-      padding: 25px 0;
+      @include Title($rufina_bold, 65px, 25px 0);
+
+      @media screen and (max-width: 750px) {
+        font-size: 45px;
+      }
+
+      @media screen and (max-width: 560px) {
+        font-size: 40px;
+      }
     }
 
     &__paragraph {
-      font-family: $roboto_regular;
-      line-height: 25px;
+      @include Paragraph(25px, #818181, $roboto_regular);
       font-size: 16px;
-      color: #818181;
+
+      @media screen and (max-width: 560px) {
+        font-size: 13px;
+      }
     }
 
     &__button {
-      display: flex;
-      justify-content: space-between;
+      @include Flex(flex, space-between, center);
       width: 400px;
-      align-items: center;
       margin-top: 40px;
+
+      @media screen and (max-width: 560px) {
+        width: 100%;
+        justify-content: center;
+      }
     }
 
     &__button:hover {
@@ -108,11 +139,13 @@
     }
 
     &__watch {
+      @include Flex(flex, space-evenly, center);
       font-family: $roboto_regular;
       width: 200px;
-      display: flex;
-      justify-content: space-evenly;
-      align-items: center;
+
+      @media screen and (max-width: 580px) {
+        display: none;
+      }
     }
 
     &__watch:hover {

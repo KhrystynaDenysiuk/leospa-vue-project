@@ -1,9 +1,9 @@
 <template>
-  <div id="menu-wrapper" v-bind:class="{ staticMenu: this.$data.menuStatic }">
+  <div id="menu-wrapper" class="container" v-bind:class="{ staticMenu: this.$data.menuStatic }">
     <div class="logo">
-        <router-link to="/">
-         <img src="../assets/logo1.png" alt="">
-        </router-link>
+      <router-link to="/">
+        <img src="../assets/logo1.png" alt="">
+      </router-link>
     </div>
     <div class="menu">
       <label class="menu__img"> </label>
@@ -73,24 +73,24 @@
 
 <style lang="scss">
   @import '../styles/_vars.scss';
+  @import '../styles/_mixins.scss';
 
   #menu-wrapper {
     width: 100%;
-    max-width: 680px;
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    position: fixed;
-    z-index: 3;
-    padding-left: 215px;
-    padding-top: 30px;
     font-family: $roboto_medium;
   }
 
-  @media screen and (min-width: 900px) {
-    .menu__burger {
-      display: none;
-    }
+  .container {
+    @include Flex(flex, flex-start, flex-end);
+    width: 100%;
+    max-width: 1170px;
+    position: fixed;
+    z-index: 3;
+  }
+
+  .logo {
+    padding-right: 70px;
+    padding-left: 8%;
   }
 
   .isMoving {
@@ -111,19 +111,92 @@
     position: absolute !important;
   }
 
+  .menu {
+
+    &__img {
+      display: none;
+
+      @media screen and (max-width: 900px) {
+        display: block;
+        display: inline-block;
+        width: 35px;
+        height: 1px;
+        vertical-align: middle;
+        border-radius: 5px;
+        position: absolute;
+        right: 12%;
+        top: 66%;
+        background-color: #000;
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          top: -9px;
+          width: 35px;
+          height: 1px;
+          background-color: #000;
+          border-radius: 5px;
+        }
+
+        &::after {
+          top: 9px;
+        }
+      }
+    }
+
+    &__burger {
+      width: 32px;
+      height: 23px;
+      opacity: 0;
+      cursor: pointer;
+      z-index: 2;
+      position: absolute;
+      right: 12%;
+      top: 51%;
+
+      &:checked ~ .menu__list{
+        display: block;
+        position: absolute;
+        right: 21%;
+        top: 90%;
+        z-index: 2;
+        width: 200px;
+      }
+    @media screen and (min-width: 900px) {
+    display: none;
+    }
+    }
+  }
+
   .list {
-    width: 450px;
+    width: 385px;
     padding-bottom: 8px;
-    font-size: 15px;
+    font-size: 13px;
+
+    @media screen and (max-width: 900px) {
+      display: none;
+      width: 100px;
+      text-align: end;
+    }
 
     &__ul-menu {
       display: flex;
       justify-content: space-between;
       list-style: none;
+
+      @media screen and (max-width: 900px) {
+        flex-direction: column;
+        cursor: pointer;
+      }
     }
   }
 
   .item {
+
+    @media screen and (max-width: 900px) {
+      padding: 10px 0;
+    }
 
     &__aboutUs:hover,
     &__team:hover,

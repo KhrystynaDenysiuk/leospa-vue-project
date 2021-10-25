@@ -71,7 +71,21 @@
           "slidesToScroll": 1,
           "swipeToSlide": true,
           // "autoplay": true,
-          "autoplaySpeed": 2000
+          "autoplaySpeed": 2000,
+          responsive: [
+            {
+              breakpoint: 1330,
+              settings: {
+                slidesToShow: 2,
+              }
+            },
+            {
+              breakpoint: 970,
+              settings: {
+                slidesToShow: 1,
+              }
+            },
+          ]
         },
       }
     },
@@ -85,12 +99,10 @@
 
 <style lang="scss">
   @import '../styles/_vars.scss';
+  @import '../styles/_mixins.scss';
 
   #procedures {
-    width: 100%;
-    height: 100%;
-    max-width: 1170px;
-    margin: 0 auto;
+    @include Center();
     text-align: center;
   }
 
@@ -100,18 +112,41 @@
       width: 700px;
       margin: 0 auto;
       padding: 100px 0 80px 0;
+
+      @media screen and (max-width: 750px) {
+        width: 100%;
+      }
     }
 
     &__title {
-      font-size: 40px;
-      padding: 33px 0;
-      font-family: $rufina_bold;
+      @include Title($rufina_bold, 40px, 33px 0);
+
+       @media screen and (max-width: 750px) {
+        font-size: 45px;
+      }
+
+      @media screen and (max-width: 560px) {
+        font-size: 40px;
+      }
     }
 
     &__paragraph {
-      line-height: 25px;
-      color: #818181;
-      font-family: $roboto_light;
+      @include Paragraph(25px, #818181, $roboto_light);
+
+      @media screen and (max-width: 1100px) {
+        padding: 0 30px;
+        font-size: 18px;
+      }
+
+      @media screen and (max-width: 560px) {
+        font-size: 13px;
+      }
+    }
+  }
+
+  @media screen and (max-width: 1300px) {
+    .slick-next, .slick-prev {
+      display: none !important;
     }
   }
 
@@ -132,9 +167,7 @@
     }
 
     &__title {
-      font-size: 23px;
-      padding: 15px 0;
-      font-family: $rufina_bold;
+      @include Title($rufina_bold, 23px, 15px 0);
     }
 
     &__subtitle {

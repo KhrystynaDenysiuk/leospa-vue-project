@@ -157,11 +157,10 @@ import phoneNumber from '../assets/phoneNumber.png';
 
 <style lang="scss">
   @import '../styles/_vars.scss';
+  @import '../styles/_mixins.scss';
 
   #contact {
-    width: 100%;
-    height: 100%;
-    margin: 0 auto;
+    @include WidthHeightMargin();
     padding-top: 150px;
   }
 
@@ -173,35 +172,65 @@ import phoneNumber from '../assets/phoneNumber.png';
       text-align: center;
       padding-bottom: 50px;
       position: relative;
+
+      @media screen and (max-width: 1000px) {
+        padding-bottom: 0;
+        width: auto;
+      }
     }
 
     &__title {
-      font-size: 40px;
-      padding: 33px 0;
-      font-family: $rufina_bold;
+      @include Title($rufina_bold, 40px, 33px 0);
+
+      @media screen and (max-width: 750px) {
+        font-size: 45px;
+      }
+
+      @media screen and (max-width: 560px) {
+        font-size: 40px;
+      }
     }
 
     &__paragraph {
-      line-height: 25px;
-      color: #818181;
-      font-family: $roboto_light;
+      @include Paragraph(25px, #818181, $roboto_light);
+
+      @media screen and (max-width: 1100px) {
+        padding: 0 30px;
+        font-size: 18px;
+      }
+
+      @media screen and (max-width: 560px) {
+        font-size: 13px;
+      }
     }
 
     &__photo {
       position: absolute;
       top: 9%;
       right: 16%;
+
+      @media screen and (max-width: 970px) {
+        display: none;
+        right: 0;
+      }
     }
 
     &__wrapper {
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
+      @include Flex(flex, center, flex-start);
       padding: 40px 0;
+
+      @media screen and (max-width: 1000px) {
+        flex-direction: column;
+        align-items: center;
+      }
     }
 
     &__items {
       width: 400px;
+
+      @media screen and (max-width: 1000px) {
+        width: 250px;
+      }
     }
 
     &__button {
@@ -261,6 +290,14 @@ import phoneNumber from '../assets/phoneNumber.png';
       padding-left: 10px;
       font-size: 13px;
       border: 1px solid #ccc;
+
+      @media screen and (max-width: 790px) {
+        width: 400px;
+      }
+
+       @media screen and (max-width: 460px) {
+        width: 250px;
+      }
 
       &.invalid {
         border-color: #ff0000;

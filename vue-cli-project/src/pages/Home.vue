@@ -41,5 +41,9 @@
     .photo2 {
       width: 600px;
     }
+
+    @media screen and (max-width: 1400px) {
+      display: none;
+    }
   }
 </style>
