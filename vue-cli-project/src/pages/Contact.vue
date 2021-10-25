@@ -24,8 +24,8 @@
             id="name" 
             class="signUp__form-control" 
             :class="{
-              invalid: ($v.form.name.$dirty && $v.form.name.required)
-                    || ($v.form.name.$dirty && $v.form.name.minLength)
+              invalid: ($v.form.name.$dirty && !$v.form.name.required)
+                    || ($v.form.name.$dirty && !$v.form.name.minLength)
             }"
             v-model.trim="form.name" 
             placeholder="Name"
@@ -43,8 +43,8 @@
             type="email" 
             class="signUp__form-control" 
             :class="{
-              invalid: ($v.form.email.$dirty && $v.form.email.required) 
-                    || ($v.form.email.$dirty && $v.form.email.email)
+              invalid: ($v.form.email.$dirty && !$v.form.email.required) 
+                    || ($v.form.email.$dirty && !$v.form.email.email)
             }"
             v-model.trim="form.email" 
             placeholder="Email Address"
@@ -141,9 +141,7 @@ import phoneNumber from '../assets/phoneNumber.png';
           this.$v.$touch()
           return
         }
-        console.log(this.form)
         console.log({ ...this.form })
-        console.log(Object.assign({}, this.form))
 
       }
     },
