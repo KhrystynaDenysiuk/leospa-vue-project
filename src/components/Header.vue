@@ -14,7 +14,7 @@
         rule behold it created good saw after she'd Our set living.
       </p>
       <div class="header__button">
-        <router-link to="/contact" class="header__contact">
+        <router-link to="/leospa-vue-project/contact" class="header__contact">
           <Button title="RESERVE NOW" />
         </router-link>
         <div class="header__watch" @click="showVideo">

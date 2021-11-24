@@ -1,7 +1,7 @@
 <template>
   <div id="menu-wrapper" class="container" v-bind:class="{ staticMenu: this.$data.menuStatic }">
     <div class="logo">
-      <router-link to="/">
+      <router-link to="/leospa-vue-project">
         <img src="../assets/logo1.png" alt="">
       </router-link>
     </div>
@@ -11,20 +11,20 @@
       <div class="menu__list list">
         <ul class="list__ul-menu">
           <li class="list__ul-menu item">
-            <router-link :to="{ path: '/', hash: '#about' }" class="item__aboutUs">
+            <router-link :to="{ path: '/leospa-vue-project', hash: '#about' }" class="item__aboutUs">
               ABOUT US
             </router-link>
           </li>
           <li class="list__ul-menu item">
-            <router-link to="/team" class="item__team">TEAM</router-link>
+            <router-link to="/leospa-vue-project/team" class="item__team">TEAM</router-link>
           </li>
           <li class="list__ul-menu item">
-            <router-link :to="{ path: '/', hash: '#gallery' }" class="item__gallery">
+            <router-link :to="{ path: '/leospa-vue-project', hash: '#gallery' }" class="item__gallery">
               GALLERY
             </router-link>
           </li>
           <li class="list__ul-menu item">
-            <router-link to="/contact" class="item__contact">CONTACT</router-link>
+            <router-link to="/leospa-vue-project/contact" class="item__contact">CONTACT</router-link>
           </li>
         </ul>
       </div>
@@ -45,7 +45,7 @@
         handler(route) {
           const currentRoute = route.path;
 
-          if (currentRoute === '/contact' || currentRoute === '/team') {
+          if (currentRoute === '/leospa-vue-project/contact' || currentRoute === '/leospa-vue-project/team') {
             this.$data.menuStatic = true;
           } else {
             this.$data.menuStatic = false;

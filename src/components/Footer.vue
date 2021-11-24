@@ -15,7 +15,7 @@
               </router-link>
             </li>
             <li class="f-list__ul-menu item">
-              <router-link to="/team" class="item__team">TEAM</router-link>
+              <router-link to="/leospa-vue-project/team" class="item__team">TEAM</router-link>
             </li>
             <li class="f-list__ul-menu item">
               <router-link :to="{ path: '/', hash: '#gallery' }" class="item__gallery">
@@ -23,7 +23,7 @@
               </router-link>
             </li>
             <li class="f-list__ul-menu item">
-              <router-link to="/contact" class="item__contact">CONTACT</router-link>
+              <router-link to="/leospa-vue-project/contact" class="item__contact">CONTACT</router-link>
             </li>
           </ul>
         </div>

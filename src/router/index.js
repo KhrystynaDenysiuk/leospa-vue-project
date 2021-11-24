@@ -9,15 +9,15 @@ export default new VueRouter({
   mode: 'history',
   routes: [
     {
-      path: '/',
+      path: '/leospa-vue-project',
       component: Home
     },
     {
-      path: '/contact',
+      path: '/leospa-vue-project/contact',
       component: Contact
     },
     {
-      path: '/team',
+      path: '/leospa-vue-project/team',
       component: Team
     }
   ],
