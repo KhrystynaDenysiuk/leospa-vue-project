@@ -65,7 +65,7 @@
     &__background-left {
       position: absolute;
       top: -13%;
-      left: -12%;
+      left: -19%;
 
       .photo1 {
         width: 200px;
